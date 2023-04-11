@@ -3,6 +3,7 @@ package main
 import (
     "fmt"
     "log"
+    "io/ioutil"
     "net/http"
     "net/http/httputil"
     "net/url"
@@ -22,11 +23,6 @@ func main() {
     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
         // 设置Header
         w.Header().Set("X-Proxy", "go-reverse-proxy")
-
-        // 修改请求的Host和Scheme
-        r.Host = "www.baidu.com"
-        r.URL.Scheme = "https"
-        r.URL.Host = "www.baidu.com"
 
         // 转发请求
         proxy.ServeHTTP(w, r)
