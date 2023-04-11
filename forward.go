@@ -3,7 +3,6 @@ package main
 import (
     "fmt"
     "log"
-    "io/ioutil"
     "net/http"
     "net/http/httputil"
     "net/url"
